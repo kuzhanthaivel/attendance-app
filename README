@@ -1,0 +1,51 @@
+BMI Calculator App
+Welcome to the BMI Calculator app! This mobile application allows users to calculate their Body Mass Index (BMI) and provides information on their weight status.
+
+Features
+Calculate BMI based on user-provided height and weight.
+Display BMI value along with weight status (Underweight, Normal Weight, Overweight, Obese).
+Simple and user-friendly interface.
+
+
+Getting Started
+Prerequisites
+Node.js and npm installed on your machine.
+Expo CLI installed globally: npm install -g expo-cli
+Installation
+Clone the repository:
+
+
+git clone 
+Navigate to the project directory:
+
+cd BMICalculator
+Install dependencies:
+
+
+npm install
+Running the App
+Start the Expo development server:
+
+
+expo start
+Scan the QR code generated in the terminal using the Expo Go app on your Android or iOS device.
+
+Building the App
+To build the Android app:
+
+
+expo build:android
+For more options, refer to the Expo documentation: Building Standalone Apps
+
+Tech Stack
+React Native
+Expo
+Tailwind CSS
+NativeWind
+React Navigation
+Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
