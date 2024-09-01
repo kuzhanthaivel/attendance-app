@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function HomeScreen() {
+export default function OverallAnalysis() {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Text>OverallAnalysis</Text>
     </View>
   )
 }
