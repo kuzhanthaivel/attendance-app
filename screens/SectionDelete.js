@@ -1,10 +1,18 @@
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React from 'react'
+import { withExpoSnack } from 'nativewind';
+import { styled } from 'nativewind';
 
-export default function SectionDelete() {
+const SView = styled(View);
+const SText = styled(Text);
+const STextInput = styled(TextInput);
+
+function SectionDelete() {
   return (
-    <View>
-      <Text>SectionDelete</Text>
-    </View>
+    <SView>
+      <SText>SectionDelete</SText>
+    </SView>
   )
 }
+
+export default withExpoSnack(SectionDelete);

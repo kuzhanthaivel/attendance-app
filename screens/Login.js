@@ -1,10 +1,20 @@
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React from 'react'
+import { withExpoSnack } from 'nativewind';
+import { styled } from 'nativewind';
 
-export default function Login() {
+const SView = styled(View);
+const SText = styled(Text);
+const STextInput = styled(TextInput);
+
+
+function Login() {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <SView>
+      <SText>Login</SText>
+    </SView>
   )
 }
+
+
+export default withExpoSnack(Login);

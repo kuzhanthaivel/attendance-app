@@ -1,10 +1,18 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { withExpoSnack } from 'nativewind';
+import { styled } from 'nativewind';
 
-export default function SectionScreen() {
+const SView = styled(View);
+const SText = styled(Text);
+const STextInput = styled(TextInput);
+
+function SectionScreen() {
   return (
-    <View>
-      <Text className="text-bold" >SectionScreen</Text>
-    </View>
+    <SView>
+      <SText className="text-bold" >SectionScreen</SText>
+    </SView>
   )
 }
+
+export default withExpoSnack(SectionScreen);
