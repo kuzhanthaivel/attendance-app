@@ -5,7 +5,6 @@ import { styled } from 'nativewind';
 
 const SView = styled(View);
 const SText = styled(Text);
-const STextInput = styled(TextInput);
 
 function SectionScreen() {
   return (

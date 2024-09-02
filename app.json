@@ -1,8 +1,8 @@
 {
   "expo": {
     "scheme": "acme",
-    "name": "BMIcalculator",
-    "slug": "BMIcalculator",
+    "name": "AttendanceApp",
+    "slug": "AttendanceApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/bmi_logo.png",
@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/bmi_logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.manikandan05.BMIcalculator"
+      "package": "com.example.attendanceapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

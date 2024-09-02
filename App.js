@@ -18,15 +18,13 @@ import YearDelete from './screens/YearDelete';
 import YearEdit from './screens/YearEdit';
 import YesterdayAnalysis from './screens/YesterdayAnalysis';
 
-
-
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="sectionmenu">
-        <Stack.Screen name="Attendance-app" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="section" component={SectionScreen} />
         <Stack.Screen name="sectionmenu" component={SectionMenu} />
         <Stack.Screen name="sectionedit" component={SectionEdit} />
@@ -46,5 +44,6 @@ const App = () => {
   );
 };
 
-AppRegistry.registerComponent('App', () => App);
+// Register the main component using the name from app.json
+AppRegistry.registerComponent('AttendanceApp', () => App);
 export default App;
