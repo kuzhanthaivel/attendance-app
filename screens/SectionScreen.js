@@ -13,14 +13,14 @@ const STouchableOpacity = styled(TouchableOpacity);
 function SectionScreen() {
   return (
     <SView className='pt-14 bg-slate-300 flex-1'>
-      <STouchableOpacity className='border-black  my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white '>
+      <SView className='border-black  my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white '>
       <STouchableOpacity>
           <SImage 
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
         <SText className='font-bold text-2xl'>Department Attendance  </SText>
-      </STouchableOpacity>
+      </SView>
 
       <STouchableOpacity className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
         <SText className='font-bold text-3xl'>A Section</SText>

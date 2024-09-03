@@ -13,22 +13,22 @@ const STouchableOpacity = styled(TouchableOpacity);
 const SectionDelete = ({ navigation }) => {
   return (
     <SView className='pt-14 bg-slate-300 flex-1'>
-      <STouchableOpacity className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16 '>
+      <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16 '>
       <STouchableOpacity className='pr-5'> 
           <SImage 
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
         <SText className='font-bold text-2xl'>Select section </SText>
-      </STouchableOpacity>
+      </SView>
 
-      <STouchableOpacity
+      <SView
       className='mx-6 mt-28 h-40 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100  '>
       <SImage 
             source={require('../assets/appIMG/Alert.png')}
           />
         <SText className='font-bold text-xl text-center'>WOULD YOU LIKE TO DELETE STUDENTS DETAILS ?</SText>
-      </STouchableOpacity>
+      </SView>
       {/*onPress={() => navigation.navigate('Details')}*/}
 
       <SView className='flex flex-row justify-evenly  '>
