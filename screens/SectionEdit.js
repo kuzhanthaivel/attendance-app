@@ -14,4 +14,4 @@ function SectionEdit() {
   )
 }
 
-export default withExpoSnack();
+export default withExpoSnack(SectionEdit);

@@ -9,10 +9,10 @@ const SText = styled(Text);
 const SImage = styled(Image);
 const STouchableOpacity = styled(TouchableOpacity);
 
-function SectionMenu() {
+const SectionMenu = ({ navigation }) => {
   return (
     <SView className='pt-14 bg-slate-300 flex-1'>
-      <STouchableOpacity className='border-black my-6 mx-3  h-14 border-solid items-center flex flex-row justify-evenly  rounded-xl bg-white pr-16 '>
+      <STouchableOpacity className='border-black my-6  mx-3 h-14 border-solid items-center flex flex-row justify-evenly  rounded-xl bg-white pr-16 '>
       <STouchableOpacity className='pr-5'> 
           <SImage 
             source={require('../assets/appIMG/arrow_back.png')}
@@ -21,7 +21,8 @@ function SectionMenu() {
         <SText className='font-bold text-2xl'>Section </SText>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
+      <STouchableOpacity
+      className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
         <SText className='font-bold text-2xl'>today attendance</SText>
       </STouchableOpacity>
 
@@ -29,7 +30,6 @@ function SectionMenu() {
         <SText className='font-bold text-2xl'>Today attandance analysis</SText>
       </STouchableOpacity>
 
-      
       <STouchableOpacity className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
         <SText className='font-bold text-2xl'>Yesterday attandance analysis</SText>
       </STouchableOpacity>
