@@ -23,11 +23,11 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="section" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="sectionmenu" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="section" component={SectionScreen} />
         <Stack.Screen name="sectionmenu" component={SectionMenu} />
-        <Stack.Screen name="sectionedit" component={SectionEdit} />
+        <Stack.Screen name="  " component={SectionEdit} />
         <Stack.Screen name="sectiondelete" component={SectionDelete} />
         <Stack.Screen name="addstudent" component={AddStudent} />
         <Stack.Screen name="login" component={Login} />
