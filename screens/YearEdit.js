@@ -18,11 +18,11 @@ function YearEdit() {
   return (
     <SView className='pt-14 bg-slate-300 flex-1 '>
       {/* Header with back button and title */}
-      <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white'>
+      <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16'>
         <STouchableOpacity>
           <SImage source={require('../assets/appIMG/arrow_back.png')} />
         </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Department Attendance</SText>
+        <SText className='font-bold text-2xl'>year edit</SText>
       </SView>
 
       {/* Section for attendance details */}

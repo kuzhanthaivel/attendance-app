@@ -19,7 +19,7 @@ function SectionScreen() {
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Department Attendance  </SText>
+        <SText className='font-bold text-2xl'>Select section</SText>
       </SView>
 
       <STouchableOpacity className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>

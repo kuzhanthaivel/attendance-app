@@ -19,7 +19,7 @@ const YearDelete = ({ navigation }) => {
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Department Attendance</SText>
+        <SText className='font-bold text-2xl'>Year delete</SText>
       </SView>
 
       <SView

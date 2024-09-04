@@ -18,7 +18,7 @@ const SectionMenu = ({ navigation }) => {
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Section </SText>
+        <SText className='font-bold text-2xl'>Select from the menu </SText>
       </STouchableOpacity>
 
       <STouchableOpacity

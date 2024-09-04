@@ -23,7 +23,7 @@ const AddStudent = ({ navigation }) => {
             source={require('../assets/appIMG/arrow_back.png')}
           />
           </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Section edit </SText>
+        <SText className='font-bold text-2xl'>Add student </SText>
       </SView>
       <SView className=''>
       <SImage className='w-full ' 
