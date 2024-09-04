@@ -28,6 +28,7 @@ const SectionEdit = ({ navigation }) => {
      >
       <SView
       className='mx-6 mt-5 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200'>
+        
         <SImage className='h-20 w-20'
         source={require('../assets/appIMG/st profile.png')}
         />
@@ -35,9 +36,10 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>John Doe</SText>
         </SView>
-        <SImage 
+        
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView>
       
       <SView
@@ -49,9 +51,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104047</SText>
         <SText className='font-bold text-sm text-center'>manikandan</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView>
 
       <SView
@@ -63,9 +65,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104025</SText>
         <SText className='font-bold text-sm text-center'>prashant</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView>
 
       <SView
@@ -77,9 +79,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>Babay</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView>
 
       
@@ -92,9 +94,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>Babay</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView><SView
       className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200'>
         <SImage className='h-20 w-20'
@@ -104,9 +106,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>Babay</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView><SView
       className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200'>
         <SImage className='h-20 w-20'
@@ -116,9 +118,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>Babay</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView><SView
       className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200'>
         <SImage className='h-20 w-20'
@@ -128,9 +130,9 @@ const SectionEdit = ({ navigation }) => {
         <SText className='text-base font-extrabold text-center'>110821104044</SText>
         <SText className='font-bold text-sm text-center'>Babay</SText>
         </SView>
-        <SImage 
+        <STouchableOpacity><SImage 
       source={ require('../assets/appIMG/delete.png')}
-      />
+      /></STouchableOpacity>
       </SView>
 
       </SScrollView>
