@@ -27,6 +27,7 @@
     "react-native-gesture-handler": "^2.14.1",
     "react-native-loading-spinner-overlay": "^3.0.1",
     "react-native-modal": "^13.0.1",
+    "react-native-paper": "^5.12.5",
     "react-native-reanimated": "^3.6.2",
     "react-native-router-flux": "^4.3.1",
     "react-native-safe-area-context": "4.8.2",

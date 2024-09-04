@@ -23,20 +23,20 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="addstudent" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="section" component={SectionScreen} />
-        <Stack.Screen name="sectionmenu" component={SectionMenu} />
+      <Stack.Navigator initialRouteName="yearedit" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />{/* done*/}
+        <Stack.Screen name="section" component={SectionScreen} />{/* done*/}
+        <Stack.Screen name="sectionmenu" component={SectionMenu} />{/* done*/}
         <Stack.Screen name="sectionedit" component={SectionEdit} />
-        <Stack.Screen name="sectiondelete" component={SectionDelete} />
-        <Stack.Screen name="addstudent" component={AddStudent} />
+        <Stack.Screen name="sectiondelete" component={SectionDelete} />{/* done*/}
+        <Stack.Screen name="addstudent" component={AddStudent} />{/* done*/}
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="overallanalysis" component={OverallAnalysis} />
         <Stack.Screen name="profile" component={Profile} />
         <Stack.Screen name="report" component={Report} />
         <Stack.Screen name="todayanalysis" component={TodayAnalysis} />
         <Stack.Screen name="todayattendance" component={TodayAttendance} />
-        <Stack.Screen name="yeardelete" component={YearDelete} />
+        <Stack.Screen name="yeardelete" component={YearDelete} />{/* done*/}
         <Stack.Screen name="yearedit" component={YearEdit} />
         <Stack.Screen name="yesterdayanalysis" component={YesterdayAnalysis} />
       </Stack.Navigator>
