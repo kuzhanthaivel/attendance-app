@@ -29,8 +29,8 @@ The Attendance App is a React Native application designed to manage and track at
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
-   ```
+   git clone https://github.com/kuzhanthaivel/attendance-app
+   ``` 
 
 2. **Navigate to the project directory:**
 
