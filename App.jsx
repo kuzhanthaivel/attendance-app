@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="yesterdayanalysis" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="overallanalysis" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />{/* done*/}
         <Stack.Screen name="section" component={SectionScreen} />{/* done*/}
         <Stack.Screen name="sectionmenu" component={SectionMenu} />{/* done*/}
