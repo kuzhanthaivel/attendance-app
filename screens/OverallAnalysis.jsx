@@ -102,8 +102,3 @@ const OverallAnalysis = ({ navigation }) => {
 };
 
 export default withExpoSnack(OverallAnalysis);
-
-
-
-
-
