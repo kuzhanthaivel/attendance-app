@@ -8,7 +8,6 @@ import SectionMenu from './screens/SectionMenu';
 import SectionEdit from './screens/SectionEdit';
 import SectionDelete from './screens/SectionDelete';
 import AddStudent from './screens/AddStudent';
-import Login from './screens/Login';
 import OverallAnalysis from './screens/OverallAnalysis';
 import Profile from './screens/Profile';
 import Report from './screens/Report';
@@ -23,17 +22,16 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="report" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="profile" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />{/* done*/}
         <Stack.Screen name="section" component={SectionScreen} />{/* done*/}
         <Stack.Screen name="sectionmenu" component={SectionMenu} />{/* done*/}
         <Stack.Screen name="sectionedit" component={SectionEdit} />{/* done*/}
         <Stack.Screen name="sectiondelete" component={SectionDelete} />{/* done*/}
         <Stack.Screen name="addstudent" component={AddStudent} />{/* done*/}
-        <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="overallanalysis" component={OverallAnalysis} />{/* done*/}
         <Stack.Screen name="profile" component={Profile} />
-        <Stack.Screen name="report" component={Report} />
+        <Stack.Screen name="report" component={Report} />{/* done*/}
         <Stack.Screen name="todayanalysis" component={TodayAnalysis} />{/* done*/}
         <Stack.Screen name="todayattendance" component={TodayAttendance} />{/* done*/}
         <Stack.Screen name="yeardelete" component={YearDelete} />{/* done*/}

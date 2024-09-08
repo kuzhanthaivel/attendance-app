@@ -22,7 +22,7 @@ function HomeScreen() {
           </STouchableOpacity>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-3 h-24 border-solid items-center flex flex-row justify-evenly  bg-purple-300 rounded-xl '>
+      <STouchableOpacity className='mx-6 mt-3 h-24 border-solid items-center flex flex-row justify-evenly bg-purple-300 rounded-xl '>
         <SText className='font-bold text-3xl'>I Year</SText>
         <SView className='flex flex-row space-x-5' > 
         <STouchableOpacity>
