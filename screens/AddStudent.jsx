@@ -59,12 +59,12 @@ const AddStudent = ({ }) => {
       {/*onPress={() => navigation.navigate('Details')}*/}
 
       <SView className='flex flex-row justify-evenly  '>
-      <STouchableOpacity
+      <STouchableOpacity onPress={() => navigation.navigate('sectionedit')}
         className='mx-6 mt-12 h-14 w-28 border-solid items-center flex justify-evenly rounded-xl bg-green-500'
         >
         <SText className='font-bold text-xl'>Cancel</SText>
         </STouchableOpacity>
-        <STouchableOpacity
+        <STouchableOpacity onPress={() => navigation.navigate('sectionedit')}
         className='mx-6 mt-12 h-14 w-28 border-solid items-center flex justify-evenly rounded-xl bg-red-500'
         >
         <SText className='font-bold text-xl'>Add</SText>

@@ -118,8 +118,8 @@ function YearEdit() {
 
       {/* Save button */}
       <SView className='items-center'>
-      <STouchableOpacity
-        className='mx-6 mt-12 h-14 w-28  border-solid items-center  flex justify-evenly rounded-xl bg-green-500'
+      <STouchableOpacity onPress={() => navigation.navigate('Home')}
+        className='mx-6 mt-12 h-14 w-28 items-center flex justify-evenly rounded-xl bg-green-500'
         >
         <SText className='font-bold text-xl'>Save</SText>
         </STouchableOpacity>

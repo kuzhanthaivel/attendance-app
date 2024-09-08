@@ -19,7 +19,7 @@ const HomeScreen = ({ }) => {
       <STouchableOpacity className='border-black m-6 h-24 items-center flex flex-row justify-evenly rounded-xl bg-emerald-400'>
         <SText className='font-bold text-2xl'>Department Attendance  </SText>
           <STouchableOpacity
-          onPress={() => navigation.navigate('sectionedit')}>
+          onPress={() => navigation.navigate('profile')}>
           <SImage className='h-16 w-16'
             source={require('../assets/appIMG/dp profile.png')}
           />
@@ -27,7 +27,7 @@ const HomeScreen = ({ }) => {
       </STouchableOpacity>
 
       <STouchableOpacity onPress={() => navigation.navigate('section')}
-      className='mx-6 mt-3 h-24  items-center flex flex-row justify-evenly bg-purple-300 rounded-xl '>
+      className='mx-6 mt-3 h-24 items-center flex flex-row justify-evenly bg-purple-300 rounded-xl '>
         <SText className='font-bold text-3xl'>I Year</SText>
         <SView className='flex flex-row space-x-5' > 
         <STouchableOpacity 

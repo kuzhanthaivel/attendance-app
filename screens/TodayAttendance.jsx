@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { withExpoSnack } from 'nativewind';
 import { styled } from 'nativewind';
 import { RadioButton } from 'react-native-paper'; // Import the RadioButton from the correct library
-
+import { useNavigation } from '@react-navigation/native';
 // Styled components using nativewind
 const SView = styled(View);
 const SText = styled(Text);
@@ -11,7 +11,9 @@ const SImage = styled(Image);
 const STouchableOpacity = styled(TouchableOpacity);
 const SScrollView = styled(ScrollView);
 
-const TodayAnalysis = ({ navigation }) => {
+const TodayAnalysis = ({ }) => {
+  const navigation = useNavigation(); 
+
   // State to manage attendance status
   const [attStatus, setAttStatus] = useState({});
   const [holiday, setHoliday] = useState(false); // Holiday state
@@ -20,7 +22,11 @@ const TodayAnalysis = ({ navigation }) => {
     { id: '110821104044', name: 'John Doe' },
     { id: '110821104047', name: 'Manikandan' },
     { id: '110821104025', name: 'Prashant' },
-    { id: '110821104039', name: 'Babay' },{ id: '110821104037', name: 'Babay' },{ id: '110821104034', name: 'Babay' },{ id: '110821104035', name: 'Babay' },{ id: '110821104033', name: 'Babay' },
+    { id: '110821104039', name: 'Babay' },
+    { id: '110821104037', name: 'Babay' },
+    { id: '110821104034', name: 'Babay' },
+    { id: '110821104035', name: 'Babay' },
+    { id: '110821104033', name: 'Babay' },
     // Add more students as needed
   ];
 
@@ -46,17 +52,18 @@ const TodayAnalysis = ({ navigation }) => {
           <SImage source={require('../assets/appIMG/arrow_back.png')} />
         </STouchableOpacity>
         <SText className="font-bold text-2xl">Today Attendance</SText>
-        {/* Holiday Toggle */}
       </SView>
+
+      {/* Holiday Toggle */}
       <SView className="mx-6 border-1 mb-3 mt-4 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200">
-          <SText className="font-bold font-bold text-2xl mr-2 border-spacing-2  ">Holiday</SText>
-          <Switch
+        <SText className="font-bold text-2xl mr-2">Holiday</SText>
+        <Switch
           className="h-10 w-20"
-            value={holiday}
-            onValueChange={toggleHoliday}
-            thumbColor={holiday ? 'green' : 'gray'}
-          />
-        </SView>
+          value={holiday}
+          onValueChange={toggleHoliday}
+          thumbColor={holiday ? 'green' : 'gray'}
+        />
+      </SView>
 
       <SScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
         {students.map((student, index) => (
@@ -94,14 +101,20 @@ const TodayAnalysis = ({ navigation }) => {
           </SView>
         ))}
       </SScrollView>
-      <SView className='items-center'>
-      <STouchableOpacity
-        className='h-14 mb-3 mt-3 w-28 border-solid items-center flex justify-evenly rounded-xl bg-green-500'
-        >
-        <SText className='font-bold text-xl'>Submit</SText>
-        </STouchableOpacity>
-        </SView>
-      {/* onPress={() => navigation.navigate('Details')} */}
+
+      {/* Submit Button */}
+      <SView className="items-center">
+  <STouchableOpacity
+    onPress={() => {
+      console.log('Attendance Submitted!'); // Log message
+      navigation.navigate('sectionmenu'); // Navigation action
+    }}
+    className="h-14 mb-3 mt-3 w-28 border-solid items-center flex justify-evenly rounded-xl bg-green-500"
+  >
+    <SText className="font-bold text-xl">Submit</SText>
+  </STouchableOpacity>
+</SView>
+
     </SView>
   );
 };

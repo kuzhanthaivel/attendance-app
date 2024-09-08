@@ -9,7 +9,7 @@ const SView = styled(View);
 const SText = styled(Text);
 const SImage = styled(Image);
 const STouchableOpacity = styled(TouchableOpacity);
-const SScrollView = styled(ScrollView);
+const SScrollView = styled(ScrollView); 
 
 const TodayAnalysis = ({  }) => {
   const navigation = useNavigation();

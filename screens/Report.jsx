@@ -3,6 +3,7 @@ import React from 'react';
 import { withExpoSnack } from 'nativewind';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 // Styled components using nativewind
 const SView = styled(View);
@@ -32,6 +33,59 @@ const Report = ({ }) => {
     { id: '17', rollNumber: '110821104051', presentCountst: 39, absentst: 12, total: 80 },
   ];
 
+  const generatePDF = async () => {
+    try {
+      // Define HTML content
+      const htmlContent = `
+        <html>
+          <head>
+            <style>
+              table { width: 100%; border-collapse: collapse; }
+              th, td { border: 1px solid #000; padding: 8px; text-align: center; }
+              th { background-color: #f2f2f2; }
+            </style>
+          </head>
+          <body>
+            <h1>Report</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Register Number</th>
+                  <th>P</th>
+                  <th>A</th>
+                  <th>%</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${absentStudents.map(student => `
+                  <tr>
+                    <td>${student.rollNumber}</td>
+                    <td>${student.presentCountst}</td>
+                    <td>${student.absentst}</td>
+                    <td>${student.total}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </body>
+        </html>
+      `;
+  
+      // Generate PDF
+      let options = {
+        html: htmlContent,
+        fileName: 'Report',
+        directory: 'Documents',
+      };
+      let file = await RNHTMLtoPDF.convert(options);
+      console.log(file.filePath);
+      // You can open or share the file using a relevant library
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    }
+  };
+  
+  
   return (
     <SView className="pt-14 bg-slate-300 flex-1">
       <SView className="border-black my-6 mx-3 h-14 items-center flex flex-row justify-evenly rounded-xl bg-white pr-16">
@@ -65,7 +119,9 @@ const Report = ({ }) => {
       </SScrollView>
 
       <SView className="items-center">
-        <STouchableOpacity className="h-14 mb-3 mt-3 w-28  items-center flex justify-evenly rounded-xl bg-green-500">
+        <STouchableOpacity 
+        onPress={generatePDF}
+        className="h-14 mb-3 mt-3 w-28  items-center flex justify-evenly rounded-xl bg-green-500">
           <SText className="font-bold text-xl">Download</SText>
         </STouchableOpacity>
       </SView>
@@ -74,3 +130,4 @@ const Report = ({ }) => {
 };
 
 export default withExpoSnack(Report);
+  

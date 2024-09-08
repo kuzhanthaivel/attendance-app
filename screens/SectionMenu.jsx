@@ -23,24 +23,28 @@ const SectionMenu = ({ }) => {
         <SText className='font-bold text-2xl'>Select from the menu </SText>
       </STouchableOpacity>
 
-      <STouchableOpacity
+      <STouchableOpacity onPress={() => navigation.navigate('todayattendance')}
       className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
         <SText className='font-bold text-2xl'>today attendance</SText>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
+      <STouchableOpacity onPress={() => navigation.navigate('todayanalysis')}
+      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
         <SText className='font-bold text-2xl'>Today attandance analysis</SText>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
+      <STouchableOpacity onPress={() => navigation.navigate('yesterdayanalysis')}
+       className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
         <SText className='font-bold text-2xl'>Yesterday attandance analysis</SText>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
+      <STouchableOpacity onPress={() => navigation.navigate('overallanalysis')}
+      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
         <SText className='font-bold text-2xl'>Overall attandance analysis</SText>
       </STouchableOpacity>
 
-      <STouchableOpacity className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
+      <STouchableOpacity onPress={() => navigation.navigate('report')}
+      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
         <SText className='font-bold text-2xl'>Report</SText>
       </STouchableOpacity>
       {/*onPress={() => navigation.navigate('Details')}*/}
