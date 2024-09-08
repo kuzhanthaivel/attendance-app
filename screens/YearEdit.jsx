@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { withExpoSnack } from 'nativewind';
 import { styled } from 'nativewind';
 import { RadioButton } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 // Styled components using nativewind
 const SView = styled(View);
@@ -11,6 +12,7 @@ const SImage = styled(Image);
 const STouchableOpacity = styled(TouchableOpacity);
 
 function YearEdit() {
+  const navigation = useNavigation();
   // State to manage the selected radio button for year and section
   const [yearChecked, setYearChecked] = useState('');
   const [sectionChecked, setSectionChecked] = useState('');
@@ -19,7 +21,7 @@ function YearEdit() {
     <SView className='pt-14 bg-slate-300 flex-1 '>
       {/* Header with back button and title */}
       <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16'>
-        <STouchableOpacity>
+        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
           <SImage source={require('../assets/appIMG/arrow_back.png')} />
         </STouchableOpacity>
         <SText className='font-bold text-2xl'>year edit</SText>

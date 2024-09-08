@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="profile" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />{/* done*/}
         <Stack.Screen name="section" component={SectionScreen} />{/* done*/}
         <Stack.Screen name="sectionmenu" component={SectionMenu} />{/* done*/}
@@ -30,7 +30,7 @@ const App = () => {
         <Stack.Screen name="sectiondelete" component={SectionDelete} />{/* done*/}
         <Stack.Screen name="addstudent" component={AddStudent} />{/* done*/}
         <Stack.Screen name="overallanalysis" component={OverallAnalysis} />{/* done*/}
-        <Stack.Screen name="profile" component={Profile} />
+        <Stack.Screen name="profile" component={Profile} />{/* done*/}
         <Stack.Screen name="report" component={Report} />{/* done*/}
         <Stack.Screen name="todayanalysis" component={TodayAnalysis} />{/* done*/}
         <Stack.Screen name="todayattendance" component={TodayAttendance} />{/* done*/}

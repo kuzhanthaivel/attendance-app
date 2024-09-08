@@ -42,7 +42,7 @@ const TodayAnalysis = ({ navigation }) => {
   return (
     <SView className="pt-14 bg-slate-300 flex-1">
       <SView className="border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16">
-        <STouchableOpacity className="pr-5">
+        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} className="pr-5">
           <SImage source={require('../assets/appIMG/arrow_back.png')} />
         </STouchableOpacity>
         <SText className="font-bold text-2xl">Today Attendance</SText>

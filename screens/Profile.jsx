@@ -2,6 +2,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { withExpoSnack } from 'nativewind';
 import { styled } from 'nativewind';
+import { useNavigation } from '@react-navigation/native';
 
 // Styled components using nativewind
 const SView = styled(View);
@@ -11,6 +12,7 @@ const STouchableOpacity = styled(TouchableOpacity);
 const SScrollView = styled(ScrollView);
 
 function Profile() {
+  const navigation = useNavigation();
   // State to control visibility of login button and student count section
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -24,7 +26,7 @@ function Profile() {
     <SView className='pt-14 bg-slate-300 flex-1'>
       {/* Header Section */}
       <SView className='border-black pr-10 my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white '>
-        <STouchableOpacity>
+        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
           <SImage 
             source={require('../assets/appIMG/arrow_back.png')}
           />
