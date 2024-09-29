@@ -1,131 +1,189 @@
-import React, { useState } from 'react'; // Import useState from React
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
-// Styled components using nativewind
-const SView = styled(View);
-const SText = styled(Text);
-const SImage = styled(Image);
-const STouchableOpacity = styled(TouchableOpacity);
-
 function YearEdit() {
   const navigation = useNavigation();
-  // State to manage the selected radio button for year and section
   const [yearChecked, setYearChecked] = useState('');
   const [sectionChecked, setSectionChecked] = useState('');
 
   return (
-    <SView className='pt-14 bg-slate-300 flex-1 '>
+    <View style={styles.container}>
       {/* Header with back button and title */}
-      <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16'>
-        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
-          <SImage source={require('../assets/appIMG/arrow_back.png')} />
-        </STouchableOpacity>
-        <SText className='font-bold text-2xl'>year edit</SText>
-      </SView>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
+          <Image source={require('../assets/appIMG/arrow_back.png')} />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>year edit</Text>
+      </View>
 
       {/* Section for attendance details */}
-      <SView className='mx-6 mt-8 border-solid p-5 flex flex-col justify-evenly rounded-xl bg-slate-100'>
+      <View style={styles.formContainer}>
         {/* Year Selection */}
-        <SView className='flex flex-col gap-4'>
-          <SText className='font-bold text-xl'>Year</SText>
-          <SView className='flex flex-row gap-4'>
+        <View style={styles.selectionGroup}>
+          <Text style={styles.label}>Year</Text>
+          <View style={styles.radioButtonGroup}>
             {/* Radio Button Options for Year */}
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="first"
                 status={yearChecked === 'first' ? 'checked' : 'unchecked'}
                 onPress={() => setYearChecked('first')}
               />
-              <SText>I</SText>
-            </SView>
+              <Text>I</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="second"
                 status={yearChecked === 'second' ? 'checked' : 'unchecked'}
                 onPress={() => setYearChecked('second')}
               />
-              <SText>II</SText>
-            </SView>
+              <Text>II</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="third"
                 status={yearChecked === 'third' ? 'checked' : 'unchecked'}
                 onPress={() => setYearChecked('third')}
               />
-              <SText>III</SText>
-            </SView>
+              <Text>III</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="fourth"
                 status={yearChecked === 'fourth' ? 'checked' : 'unchecked'}
                 onPress={() => setYearChecked('fourth')}
               />
-              <SText>IV</SText>
-            </SView>
-          </SView>
-        </SView>
+              <Text>IV</Text>
+            </View>
+          </View>
+        </View>
 
         {/* Section Selection */}
-        <SView className='flex flex-col gap-4'>
-          <SText className='font-bold text-xl'>Section</SText>
-          <SView className='flex flex-row gap-4'>
+        <View style={styles.selectionGroup}>
+          <Text style={styles.label}>Section</Text>
+          <View style={styles.radioButtonGroup}>
             {/* Radio Button Options for Section */}
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="first"
                 status={sectionChecked === 'first' ? 'checked' : 'unchecked'}
                 onPress={() => setSectionChecked('first')}
               />
-              <SText>A</SText>
-            </SView>
+              <Text>A</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="second"
                 status={sectionChecked === 'second' ? 'checked' : 'unchecked'}
                 onPress={() => setSectionChecked('second')}
               />
-              <SText>B</SText>
-            </SView>
+              <Text>B</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="third"
                 status={sectionChecked === 'third' ? 'checked' : 'unchecked'}
                 onPress={() => setSectionChecked('third')}
               />
-              <SText>C</SText>
-            </SView>
+              <Text>C</Text>
+            </View>
 
-            <SView className='flex flex-row items-center'>
+            <View style={styles.radioButtonContainer}>
               <RadioButton
                 value="fourth"
                 status={sectionChecked === 'fourth' ? 'checked' : 'unchecked'}
                 onPress={() => setSectionChecked('fourth')}
               />
-              <SText>D</SText>
-            </SView>
-          </SView>
-        </SView>
-      </SView>
+              <Text>D</Text>
+            </View>
+          </View>
+        </View>
+      </View>
 
       {/* Save button */}
-      <SView className='items-center'>
-      <STouchableOpacity onPress={() => navigation.navigate('Home')}
-        className='mx-6 mt-12 h-14 w-28 items-center flex justify-evenly rounded-xl bg-green-500'
+      <View style={styles.saveButtonContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Home')}
+          style={styles.saveButton}
         >
-        <SText className='font-bold text-xl'>Save</SText>
-        </STouchableOpacity>
-        </SView>
-    </SView>
+          <Text style={styles.saveButtonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
-export default withExpoSnack(YearEdit);
+// StyleSheet for styling the components
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 56,
+    backgroundColor: '#CBD5E1',
+  },
+  header: {
+    borderColor: '#000',
+    marginVertical: 24,
+    marginHorizontal: 12,
+    height: 56,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#fff',
+    paddingRight: 64,
+  },
+  headerText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  formContainer: {
+    marginHorizontal: 24,
+    marginTop: 32,
+    padding: 20,
+    backgroundColor: '#F1F5F9',
+    borderRadius: 12,
+  },
+  selectionGroup: {
+    flexDirection: 'column',
+    gap: 16,
+  },
+  label: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  radioButtonGroup: {
+    flexDirection: 'row',
+    gap: 16,
+  },
+  radioButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  saveButtonContainer: {
+    alignItems: 'center',
+  },
+  saveButton: {
+    marginHorizontal: 24,
+    marginTop: 48,
+    height: 56,
+    width: 112,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+    backgroundColor: '#10B981',
+  },
+  saveButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#fff',
+  },
+});
+
+export default YearEdit;

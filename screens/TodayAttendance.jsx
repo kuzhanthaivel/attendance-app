@@ -1,17 +1,9 @@
-import { View, Text, Image, TouchableOpacity, ScrollView, Switch } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, Switch, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
 import { RadioButton } from 'react-native-paper'; // Import the RadioButton from the correct library
 import { useNavigation } from '@react-navigation/native';
-// Styled components using nativewind
-const SView = styled(View);
-const SText = styled(Text);
-const SImage = styled(Image);
-const STouchableOpacity = styled(TouchableOpacity);
-const SScrollView = styled(ScrollView);
 
-const TodayAnalysis = ({ }) => {
+const TodayAnalysis = () => {
   const navigation = useNavigation(); 
 
   // State to manage attendance status
@@ -46,38 +38,34 @@ const TodayAnalysis = ({ }) => {
   };
 
   return (
-    <SView className="pt-14 bg-slate-300 flex-1">
-      <SView className="border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16">
-        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} className="pr-5">
-          <SImage source={require('../assets/appIMG/arrow_back.png')} />
-        </STouchableOpacity>
-        <SText className="font-bold text-2xl">Today Attendance</SText>
-      </SView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} style={styles.backButton}>
+          <Image source={require('../assets/appIMG/arrow_back.png')} />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Today Attendance</Text>
+      </View>
 
       {/* Holiday Toggle */}
-      <SView className="mx-6 border-1 mb-3 mt-4 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200">
-        <SText className="font-bold text-2xl mr-2">Holiday</SText>
+      <View style={styles.holidayToggle}>
+        <Text style={styles.holidayText}>Holiday</Text>
         <Switch
-          className="h-10 w-20"
           value={holiday}
           onValueChange={toggleHoliday}
           thumbColor={holiday ? 'green' : 'gray'}
         />
-      </SView>
+      </View>
 
-      <SScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
         {students.map((student, index) => (
-          <SView
-            key={index}
-            className="mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-200"
-          >
-            <SImage className="h-20 w-20" source={require('../assets/appIMG/st profile.png')} />
-            <SView className="flex justify-start items-start">
-              <SText className="text-base font-extrabold text-center">{student.id}</SText>
-              <SText className="font-bold text-sm text-center">{student.name}</SText>
-            </SView>
-            <SView className="flex flex-col">
-              <SView className="flex flex-row items-center">
+          <View key={index} style={styles.studentCard}>
+            <Image style={styles.studentImage} source={require('../assets/appIMG/st profile.png')} />
+            <View>
+              <Text style={styles.studentId}>{student.id}</Text>
+              <Text style={styles.studentName}>{student.name}</Text>
+            </View>
+            <View>
+              <View style={styles.radioRow}>
                 <RadioButton
                   value="present"
                   status={attStatus[student.id] === 'present' ? 'checked' : 'unchecked'}
@@ -85,9 +73,9 @@ const TodayAnalysis = ({ }) => {
                   color={attStatus[student.id] === 'present' ? 'green' : 'gray'}
                   disabled={holiday} // Disable if holiday
                 />
-                <SText className="font-extrabold">P</SText>
-              </SView>
-              <SView className="flex flex-row items-center">
+                <Text style={styles.radioText}>P</Text>
+              </View>
+              <View style={styles.radioRow}>
                 <RadioButton
                   value="absent"
                   status={attStatus[student.id] === 'absent' ? 'checked' : 'unchecked'}
@@ -95,28 +83,125 @@ const TodayAnalysis = ({ }) => {
                   color={attStatus[student.id] === 'absent' ? 'red' : 'gray'}
                   disabled={holiday} // Disable if holiday
                 />
-                <SText className="font-extrabold">A</SText>
-              </SView>
-            </SView>
-          </SView>
+                <Text style={styles.radioText}>A</Text>
+              </View>
+            </View>
+          </View>
         ))}
-      </SScrollView>
+      </ScrollView>
 
       {/* Submit Button */}
-      <SView className="items-center">
-  <STouchableOpacity
-    onPress={() => {
-      console.log('Attendance Submitted!'); // Log message
-      navigation.navigate('sectionmenu'); // Navigation action
-    }}
-    className="h-14 mb-3 mt-3 w-28 border-solid items-center flex justify-evenly rounded-xl bg-green-500"
-  >
-    <SText className="font-bold text-xl">Submit</SText>
-  </STouchableOpacity>
-</SView>
-
-    </SView>
+      <View style={styles.submitContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Attendance Submitted!'); // Log message
+            navigation.navigate('sectionmenu'); // Navigation action
+          }}
+          style={styles.submitButton}
+        >
+          <Text style={styles.submitText}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
-export default withExpoSnack(TodayAnalysis);
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 56, // pt-14 equivalent
+    backgroundColor: '#CBD5E1', // bg-slate-300
+    flex: 1,
+  },
+  header: {
+    marginVertical: 24, // my-6
+    marginHorizontal: 12, // mx-3
+    height: 56, // h-14
+    borderColor: 'black',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: 10,
+    backgroundColor: 'white',
+    paddingRight: 64, // pr-16
+  },
+  backButton: {
+    paddingRight: 20, // pr-5
+  },
+  headerText: {
+    fontSize: 24, // text-2xl
+    fontWeight: 'bold',
+  },
+  holidayToggle: {
+    marginHorizontal: 24, // mx-6
+    marginBottom: 12, // mb-3
+    marginTop: 16, // mt-4
+    height: 56, // same as student card height for consistency
+    borderWidth: 1,
+    borderColor: '#D1D5DB', // lighter border for bg-slate-200
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: 10,
+    backgroundColor: '#E5E7EB', // bg-slate-200
+  },
+  holidayText: {
+    fontSize: 24, // text-2xl
+    fontWeight: 'bold',
+    marginRight: 8, // mr-2
+  },
+  studentCard: {
+    marginHorizontal: 24, // mx-6
+    marginTop: 16, // mt-4
+    height: 96, // h-24
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: 10,
+    backgroundColor: '#E5E7EB',
+  },
+  studentImage: {
+    height: 80, // h-20
+    width: 80, // w-20
+  },
+  studentId: {
+    fontSize: 16, // text-base
+    fontWeight: '800', // font-extrabold
+    textAlign: 'center',
+  },
+  studentName: {
+    fontSize: 14, // text-sm
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  radioRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioText: {
+    fontWeight: '800', // font-extrabold
+  },
+  submitContainer: {
+    alignItems: 'center',
+  },
+  submitButton: {
+    height: 56, // h-14
+    marginBottom: 12, // mb-3
+    marginTop: 12, // mt-3
+    width: 112, // w-28
+    borderWidth: 1,
+    borderColor: '#38A169', // green border color
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    backgroundColor: '#38A169', // bg-green-500
+  },
+  submitText: {
+    fontSize: 20, // text-xl
+    fontWeight: 'bold',
+    color: 'white',
+  },
+});
+
+export default TodayAnalysis;

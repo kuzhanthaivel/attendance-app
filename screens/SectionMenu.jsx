@@ -1,56 +1,84 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 
-// Styled components using nativewind
-const SView = styled(View);
-const SText = styled(Text);
-const SImage = styled(Image);
-const STouchableOpacity = styled(TouchableOpacity);
+const SectionMenu = () => {
+  const navigation = useNavigation();
 
-const SectionMenu = ({ }) => {
-    const navigation = useNavigation(); 
   return (
-    <SView className='pt-14 bg-slate-300 flex-1'>
-      <STouchableOpacity className='border-black my-6  mx-3 h-14 border-solid items-center flex flex-row justify-evenly  rounded-xl bg-white pr-16 '>
-      <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} className='pr-5'> 
-          <SImage 
-            source={require('../assets/appIMG/arrow_back.png')}
-          />
-          </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Select from the menu </SText>
-      </STouchableOpacity>
+    <View style={styles.container}>
+      {/* Header */}
+      <TouchableOpacity style={styles.headerContainer}>
+        <TouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} style={styles.backButton}>
+          <Image source={require('../assets/appIMG/arrow_back.png')} />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Select from the menu</Text>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('todayattendance')}
-      className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
-        <SText className='font-bold text-2xl'>today attendance</SText>
-      </STouchableOpacity>
+      {/* Menu options */}
+      <TouchableOpacity onPress={() => navigation.navigate('todayattendance')} style={styles.menuButton}>
+        <Text style={styles.menuText}>Today Attendance</Text>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('todayanalysis')}
-      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
-        <SText className='font-bold text-2xl'>Today attandance analysis</SText>
-      </STouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('todayanalysis')} style={styles.menuButton}>
+        <Text style={styles.menuText}>Today Attendance Analysis</Text>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('yesterdayanalysis')}
-       className='mx-6 mt-4 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
-        <SText className='font-bold text-2xl'>Yesterday attandance analysis</SText>
-      </STouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('yesterdayanalysis')} style={styles.menuButton}>
+        <Text style={styles.menuText}>Yesterday Attendance Analysis</Text>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('overallanalysis')}
-      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
-        <SText className='font-bold text-2xl'>Overall attandance analysis</SText>
-      </STouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('overallanalysis')} style={styles.menuButton}>
+        <Text style={styles.menuText}>Overall Attendance Analysis</Text>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('report')}
-      className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
-        <SText className='font-bold text-2xl'>Report</SText>
-      </STouchableOpacity>
-      {/*onPress={() => navigation.navigate('Details')}*/}
-      
-    </SView>
+      <TouchableOpacity onPress={() => navigation.navigate('report')} style={styles.menuButton}>
+        <Text style={styles.menuText}>Report</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
-export default withExpoSnack(SectionMenu);
+// StyleSheet for the component
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 56,
+    backgroundColor: '#CBD5E1',
+  },
+  headerContainer: {
+    borderColor: '#000',
+    marginVertical: 24,
+    marginHorizontal: 12,
+    height: 56,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#fff',
+    paddingRight: 64,
+  },
+  backButton: {
+    paddingRight: 20,
+  },
+  headerText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  menuButton: {
+    marginHorizontal: 24,
+    marginTop: 16,
+    height: 96,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#E2E8F0',
+  },
+  menuText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+});
+
+export default SectionMenu;

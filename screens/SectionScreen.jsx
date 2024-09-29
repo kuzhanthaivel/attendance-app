@@ -1,66 +1,99 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
-// Styled components using nativewind
-const SView = styled(View);
-const SText = styled(Text);
-const SImage = styled(Image);
-const STouchableOpacity = styled(TouchableOpacity);
 
-
-  const SectionScreen = ({ }) => {
-    const navigation = useNavigation(); 
+const SectionScreen = () => {
+  const navigation = useNavigation();
+  
   return (
-    <SView className='pt-14 bg-slate-300 flex-1'>
-      <SView className='border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white '>
-      <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
-          <SImage 
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}>
+          <Image 
             source={require('../assets/appIMG/arrow_back.png')}
           />
-          </STouchableOpacity>
-        <SText className='font-bold text-2xl'>Select section</SText>
-      </SView>
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Select section</Text>
+      </View>
 
-      <STouchableOpacity onPress={() => navigation.navigate('sectionmenu')}
-       className='mx-6 mt-43 h-24 border-solid items-center flex flex-row justify-evenly rounded-xl bg-slate-100 '>
-        <SText className='font-bold text-3xl'>A Section</SText>
-        <SView className='flex flex-row space-x-5'> 
-        <STouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
-        <SImage
+      {/* Section A */}
+      <TouchableOpacity onPress={() => navigation.navigate('sectionmenu')} style={styles.sectionContainer}>
+        <Text style={styles.sectionText}>A Section</Text>
+        <View style={styles.iconContainer}> 
+          <TouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
+            <Image
               source={require('../assets/appIMG/Edit.png')}
             />
-        </STouchableOpacity>
-        <STouchableOpacity onPress={() => navigation.navigate('sectiondelete')}>
-        <SImage
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('sectiondelete')}>
+            <Image
               source={require('../assets/appIMG/delete.png')}
             />
-        </STouchableOpacity> 
-        </SView>
-      </STouchableOpacity>
+          </TouchableOpacity> 
+        </View>
+      </TouchableOpacity>
 
-      <STouchableOpacity onPress={() => navigation.navigate('sectionmenu')}
-       className='mx-6 mt-3 h-24 bg-slate-100 border-solid items-center flex flex-row justify-evenly rounded-xl'>
-        <SText className='font-bold text-3xl'>B section</SText>
-        <SView className='flex flex-row space-x-5'> 
-        <STouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
-        <SImage
+      {/* Section B */}
+      <TouchableOpacity onPress={() => navigation.navigate('sectionmenu')} style={styles.sectionContainer}>
+        <Text style={styles.sectionText}>B Section</Text>
+        <View style={styles.iconContainer}> 
+          <TouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
+            <Image
               source={require('../assets/appIMG/Edit.png')}
             />
-        </STouchableOpacity>
-        <STouchableOpacity onPress={() => navigation.navigate('sectiondelete')}>
-        <SImage
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('sectiondelete')}>
+            <Image
               source={require('../assets/appIMG/delete.png')}
             />
-        </STouchableOpacity> 
-        </SView>
-      </STouchableOpacity>
-
-      
-    </SView>
+          </TouchableOpacity> 
+        </View>
+      </TouchableOpacity>
+    </View>
   );
-}
+};
 
+// Stylesheet for the component
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 56,
+    backgroundColor: '#CBD5E1',
+  },
+  header: {
+    borderColor: '#000',
+    marginVertical: 24,
+    marginHorizontal: 12,
+    height: 56,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#fff',
+  },
+  headerText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  sectionContainer: {
+    marginHorizontal: 24,
+    marginTop: 12,
+    height: 96,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#E2E8F0',
+  },
+  sectionText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    gap: 20,
+  },
+});
 
-export default withExpoSnack(SectionScreen);
+export default SectionScreen;
