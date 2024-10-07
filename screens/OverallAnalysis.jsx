@@ -1,106 +1,185 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 
-// Styled components using nativewind
-const SView = styled(View);
-const SText = styled(Text);
-const SImage = styled(Image);
-const STouchableOpacity = styled(TouchableOpacity);
-const SScrollView = styled(ScrollView);
-
-const OverallAnalysis = ({ }) => {
+const OverallAnalysis = () => {
   const navigation = useNavigation();
-  // State for each student's toggle state
   const [expandedList, setExpandedList] = useState({});
 
-  // Function to toggle the expansion of a list item
   const toggleExpand = (id) => {
     setExpandedList((prevState) => ({
       ...prevState,
-      [id]: !prevState[id], // Toggle the state for the given ID
+      [id]: !prevState[id],
     }));
   };
 
-  // Example data for the list of absent students
   const absentStudents = [
     { id: '1', name: 'John Doe', rollNumber: '110821104044', absentst: 0, percentagest: 100, presentCountst: 80 },
     { id: '2', name: 'Jane Smith', rollNumber: '110821104045', absentst: 20, percentagest: 75, presentCountst: 60 },
     { id: '4', name: 'Alex Brown', rollNumber: '110821104047', absentst: 60, percentagest: 25, presentCountst: 20 },
     { id: '3', name: 'Sam Johnson', rollNumber: '110821104046', absentst: 40, percentagest: 50, presentCountst: 40 },
-    { id: '5', name: 'John Doe', rollNumber: '110821104044', absentst: 0, percentagest: 100, presentCountst: 80 },
-    { id: '6', name: 'Jane Smith', rollNumber: '110821104045', absentst: 20, percentagest: 75, presentCountst: 60 },
-    { id: '7', name: 'Alex Brown', rollNumber: '110821104047', absentst: 60, percentagest: 25, presentCountst: 20 },
-    { id: '8', name: 'Sam Johnson', rollNumber: '110821104046', absentst: 40, percentagest: 50, presentCountst: 40 },
+    // More student objects...
   ];
 
   return (
-    <SView className="pt-14 bg-slate-300 flex-1">
-      <SView className="border-black my-6 mx-3 h-14 border-solid items-center flex flex-row justify-evenly rounded-xl bg-white pr-16">
-        <STouchableOpacity onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')} className="pr-5">
-          <SImage source={require('../assets/appIMG/arrow_back.png')} />
-        </STouchableOpacity>
-        <SText className="font-bold text-2xl">Overall Analysis</SText>
-      </SView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity
+          onPress={() => navigation.canGoBack() ? navigation.goBack() : console.log('No screen to go back to')}
+          style={styles.backButton}>
+          <Image source={require('../assets/appIMG/arrow_back.png')} />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Overall Analysis</Text>
+      </View>
 
-
-      <SScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
-        {/* List of absent students */}
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
         {absentStudents.map((student) => (
-          <SView key={student.id} className='mx-6 mt-5 border-solid items-center flex flex-col justify-start rounded-xl bg-slate-200'>
-            <SView className='flex flex-row items-center justify-between w-full p-3'>
-              <SImage className='h-20 w-20' source={require('../assets/appIMG/st profile.png')} />
-              <SView className='flex justify-start items-start'>
-                <SText className='text-base font-extrabold'>{student.rollNumber}</SText>
-                <SText className='font-bold text-sm'>{student.name}</SText>
-              </SView>
-              <STouchableOpacity onPress={() => toggleExpand(student.id)}>
-                <SImage
+          <View key={student.id} style={styles.studentCard}>
+            <View style={styles.studentInfoRow}>
+              <Image style={styles.studentImage} source={require('../assets/appIMG/st profile.png')} />
+              <View style={styles.studentDetails}>
+                <Text style={styles.studentRoll}>{student.rollNumber}</Text>
+                <Text style={styles.studentName}>{student.name}</Text>
+              </View>
+              <TouchableOpacity onPress={() => toggleExpand(student.id)}>
+                <Image
                   source={
                     expandedList[student.id]
-                      ? require('../assets/appIMG/Arrow up.png') // Up arrow image
-                      : require('../assets/appIMG/Arrow down.png') // Down arrow image
+                      ? require('../assets/appIMG/Arrow up.png')
+                      : require('../assets/appIMG/Arrow down.png')
                   }
                 />
-              </STouchableOpacity>
-            </SView>
+              </TouchableOpacity>
+            </View>
 
             {expandedList[student.id] && (
-              <SView className='pb-5'>
-                {/* Additional content shown when expanded */}
-                <SView className="flex flex-row justify-evenly justify-items-center gap-x-20">
-                  <SView className="flex flex-row">
-                    <SText className="font-bold text-xl text-red-600">{student.absentst}</SText>
-                    <SText className="font-bold text-xl text-red-600">A</SText>
-                  </SView>
-                  <SView className="flex flex-row">
-                    <SText className="font-bold text-xl text-green-600">{student.presentCountst}</SText>
-                    <SText className="font-bold text-xl text-green-600">P</SText>
-                  </SView>
-                  <SView className="flex flex-row">
-                    <SText className="font-bold text-xl text-blue-600">{student.percentagest}</SText>
-                    <SText className="font-bold text-xl text-blue-600">%</SText>
-                  </SView>
-                </SView>
+              <View style={styles.expandedContent}>
+                <View style={styles.rowWithSpacing}>
+                  <View style={styles.statusRow}>
+                    <Text style={styles.absentText}>{student.absentst}</Text>
+                    <Text style={styles.absentText}> A</Text>
+                  </View>
+                  <View style={styles.statusRow}>
+                    <Text style={styles.presentText}>{student.presentCountst}</Text>
+                    <Text style={styles.presentText}> P</Text>
+                  </View>
+                  <View style={styles.statusRow}>
+                    <Text style={styles.totalText}>{student.percentagest}</Text>
+                    <Text style={styles.totalText}> %</Text>
+                  </View>
+                </View>
 
-                {/* Progress Bar for Individual Student */}
-                <SView className="mt-2">
-                  <SView className="w-full h-3 bg-gray-300 rounded-full overflow-hidden">
-                    <SView
-                      className="h-full bg-green-500"
-                      style={{ width: `${student.percentagest}%` }}
-                    />
-                  </SView>
-                </SView>
-              </SView>
+                <View style={styles.individualProgressBarContainer}>
+                  <View style={styles.individualProgressBarBackground}>
+                    <View style={[styles.progressBar, { width: `${student.percentagest}%` }]} />
+                  </View>
+                </View>
+              </View>
             )}
-          </SView>
+          </View>
         ))}
-      </SScrollView>
-    </SView>
+      </ScrollView>
+    </View>
   );
 };
 
-export default withExpoSnack(OverallAnalysis);
+const styles = StyleSheet.create({
+  absentText: {
+    color: '#DC2626',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  progressBar: {
+    height: '100%',
+    backgroundColor: '#22C55E',
+  },
+  presentText: {
+    color: '#16A34A',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  totalText: {
+    color: '#2563EB',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  container: {
+    flex: 1,
+    paddingTop: 56,
+    backgroundColor: '#E2E8F0',
+  },
+  statusRow: {
+    flexDirection: 'row',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    height: 56,
+    marginHorizontal: 12,
+    marginVertical: 16,
+    paddingRight: 64,
+  },
+  rowWithSpacing: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    gap: 40,
+  },
+  backButton: {
+    paddingRight: 20,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  studentCard: {
+    marginHorizontal: 24,
+    marginTop: 20,
+    backgroundColor: '#E2E8F0',
+    borderRadius: 16,
+    backgroundColor: '#F1F5F9',
+    paddingBottom: 16,
+  },
+  studentInfoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    padding: 12,
+  },
+  studentImage: {
+    height: 80,
+    width: 80,
+  },
+  studentDetails: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  studentRoll: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  studentName: {
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  expandedContent: {
+    padding: 12,
+    backgroundColor: '#F1F5F9',
+  },
+  individualProgressBarContainer: {
+    marginTop: 3,
+  },
+  individualProgressBarBackground: {
+    width: '100%',
+    height: 14,
+    backgroundColor: '#86EFAC',
+    borderRadius: 9999,
+    overflow: 'hidden',
+  },
+  
+});
+
+export default OverallAnalysis;
