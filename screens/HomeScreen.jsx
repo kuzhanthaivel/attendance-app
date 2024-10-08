@@ -9,7 +9,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <TouchableOpacity style={styles.departmentAttendance}>
         <Text style={styles.textBold}>Department Attendance</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('profile')}>
+        <TouchableOpacity>
           <Image style={styles.profileImage} source={require('../assets/appIMG/dp profile.png')} />
         </TouchableOpacity>
       </TouchableOpacity>
