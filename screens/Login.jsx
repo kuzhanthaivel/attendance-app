@@ -39,7 +39,14 @@ const login = () => {
         <TouchableOpacity 
           onPress={() => navigation.navigate('Home')} 
           style={styles.cancelButton}>
-          <Text style={styles.buttonText}>Sign in</Text>
+          <Text style={styles.buttonText}>Log in</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{flexDirection: 'row',
+    justifyContent: 'center',paddingTop: 40,gap: 16, }}>
+        <Text style={{ color: '#8693A5', fontSize: 16, marginBottom: 16 }}>Not a member?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text style={{ color: '#1C2A41', fontSize: 16, textDecorationLine: 'underline', }} onPress={() => navigation.navigate('Register')} > Create an account. </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -76,25 +83,25 @@ const styles = StyleSheet.create({
     fontSize: 20, // 'text-xl' in Tailwind (xl ~ 20px)
   },
   inputField: {
-    paddingLeft: 32, // 'pl-8' in Tailwind (8 * 4 = 32)
+    paddingLeft: 32,
   },
   buttonContainer: {
-    flexDirection: 'row', // 'flex flex-row'
-    justifyContent: 'space-evenly', // 'justify-evenly'
+    flexDirection: 'row',
+    justifyContent: 'space-evenly', 
   },
   cancelButton: {
-    marginHorizontal: 24, // 'mx-6' in Tailwind (6 * 4 = 24)
-    marginTop: 48, // 'mt-12' in Tailwind (12 * 4 = 48)
-    height: 56, // 'h-14' in Tailwind (14 * 4 = 56)
-    width: 112, // 'w-28' in Tailwind (28 * 4 = 112)
-    alignItems: 'center', // 'items-center'
-    justifyContent: 'space-evenly', // 'justify-evenly'
-    borderRadius: 12, // 'rounded-xl'
-    backgroundColor: '#10B981', // 'bg-green-500'
+    marginHorizontal: 24,
+    marginTop: 48, 
+    height: 56,
+    width: 112, 
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: 12,
+    backgroundColor: '#10B981', 
   },
   buttonText: {
-    fontWeight: 'bold', // 'font-bold'
-    fontSize: 20, // 'text-xl' in Tailwind (xl ~ 20px)
+    fontWeight: 'bold', 
+    fontSize: 20, 
   },
 });
 

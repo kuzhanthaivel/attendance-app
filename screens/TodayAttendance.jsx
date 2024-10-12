@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 const TodayAnalysis = () => {
   const navigation = useNavigation(); 
 
-  // State to manage attendance status
+
   const [attStatus, setAttStatus] = useState({});
-  const [holiday, setHoliday] = useState(false); // Holiday state
+  const [holiday, setHoliday] = useState(false); 
 
   const students = [
     { id: '110821104044', name: 'John Doe' },
