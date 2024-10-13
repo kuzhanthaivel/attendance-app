@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
+    "axios": "^1.7.7",
     "eas": "^0.1.0",
     "expo": "^51.0.32",
     "expo-constants": "~16.0.2",

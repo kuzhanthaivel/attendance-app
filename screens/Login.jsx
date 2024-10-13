@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { View, Text, Image,ScrollView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const login = () => {
@@ -7,9 +7,18 @@ const login = () => {
 
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
+  const [isDisabled, setIsDisabled] = useState(true);
+
+    useEffect(() => {
+        if (Username && Password ) {
+            setIsDisabled(false);  // Enable button if passwords match
+        } else {
+            setIsDisabled(true);   // Disable button if passwords don't match
+        }
+    }, [Password, Username]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image style={styles.studentImage} source={require('../assets/appIMG/login.png')} />
       </View>
@@ -36,7 +45,7 @@ const login = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity 
+        <TouchableOpacity disabled={isDisabled}
           onPress={() => navigation.navigate('Home')} 
           style={styles.cancelButton}>
           <Text style={styles.buttonText}>Log in</Text>
@@ -49,7 +58,7 @@ const login = () => {
           <Text style={{ color: '#1C2A41', fontSize: 16, textDecorationLine: 'underline', }} onPress={() => navigation.navigate('Register')} > Create an account. </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

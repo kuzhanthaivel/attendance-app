@@ -8,6 +8,8 @@ function YearEdit() {
   const [yearChecked, setYearChecked] = useState('');
   const [sectionChecked, setSectionChecked] = useState('');
 
+
+  
   return (
     <View style={styles.container}>
       {/* Header with back button and title */}

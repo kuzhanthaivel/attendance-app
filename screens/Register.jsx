@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image,ScrollView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
  function Register() {
     const navigation = useNavigation();
@@ -17,9 +18,30 @@ import { useNavigation } from '@react-navigation/native';
         } else {
             setIsDisabled(true);   // Disable button if passwords don't match
         }
-    }, [Password, VerifyPassword]); 
+    }, [Password, VerifyPassword, Username]); 
+    
+    const handlesubmit = () => {
+        const userData = {
+            username: Username,
+            password: Password,
+        }
+        if(!isDisabled){
+            axios.post("http://192.168.220.82:5001/register",userData)
+            .then((res)=>console.log(res.data))
+            .catch((err) => console.log(err.message))
+            if(res.data.status=="ok"){
+                Alert.alert("Registration Successful!")
+                navigation.navigate('Login')
+            }else{
+                Alert.alert("Registration Failed!")
+            }
+        }else {
+            Alert.alert("Please enter a username and password")}
+        
+    }
+    
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <View style={styles.imageContainer}>
             <Image style={styles.studentImage} source={require('../assets/appIMG/login.png')} />
           </View>
@@ -56,7 +78,10 @@ import { useNavigation } from '@react-navigation/native';
     
           <View style={styles.buttonContainer}>
             <TouchableOpacity disabled={isDisabled}
-              onPress={() => navigation.navigate('Login')} 
+            onPress={() => {
+            handlesubmit();
+            }}
+
               style={styles.cancelButton}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
@@ -68,7 +93,7 @@ import { useNavigation } from '@react-navigation/native';
               <Text style={{ color: '#1C2A41', fontSize: 16, textDecorationLine: 'underline', }} onPress={() => navigation.navigate('Login')} > Log in. </Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       );
     };
     
