@@ -1,10 +1,16 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation(); 
+  const [year, setYear] = useState('');
 
+  function SetYear(year) {
+    setYear(year);
+    console.log(year)
+  }
+  
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.departmentAttendance}>
@@ -14,7 +20,13 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.yearButton} onPress={() => navigation.navigate('section')}>
+      <TouchableOpacity 
+      style={styles.yearButton} 
+      onPress={() => {
+    SetYear(1); 
+    navigation.navigate('section', { year}); 
+  }}
+      >
         <Text style={styles.textYear}>I Year</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('yearedit')}>
@@ -26,7 +38,11 @@ const HomeScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.yearButton, styles.secondYear]} onPress={() => navigation.navigate('section')}>
+      <TouchableOpacity style={[styles.yearButton, styles.secondYear]} 
+      onPress={() => {
+    SetYear(2); 
+    navigation.navigate('section', { year}); 
+  }}>
         <Text style={styles.textYear}>II Year</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('yearedit')}>
@@ -38,7 +54,11 @@ const HomeScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.yearButton, styles.thirdYear]} onPress={() => navigation.navigate('section')}>
+      <TouchableOpacity style={[styles.yearButton, styles.thirdYear]} 
+        onPress={() => {
+    SetYear(3); 
+    navigation.navigate('section', { year}); 
+  }}>
         <Text style={styles.textYear}>III Year</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('yearedit')}>
@@ -50,7 +70,11 @@ const HomeScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.yearButton, styles.fourthYear]} onPress={() => navigation.navigate('section')}>
+      <TouchableOpacity style={[styles.yearButton, styles.fourthYear]}
+             onPress={() => {
+    SetYear(4); 
+    navigation.navigate('section', { year}); 
+  }}>
         <Text style={styles.textYear}>IV Year</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('yearedit')}>

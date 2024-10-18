@@ -4,7 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 
 const SectionScreen = () => {
   const navigation = useNavigation();
+  const { year } = route.params;
+  const [section, setSection] = useState('');
   
+  function SetSection(section) {
+   setSection(section);
+  }
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -18,10 +24,18 @@ const SectionScreen = () => {
       </View>
 
       {/* Section A */}
-      <TouchableOpacity onPress={() => navigation.navigate('sectionmenu')} style={styles.sectionContainer}>
+      <TouchableOpacity 
+      onPress={() => {
+    navigation.navigate('sectionmenu'); 
+  }} 
+  style={styles.sectionContainer}>
         <Text style={styles.sectionText}>A Section</Text>
         <View style={styles.iconContainer}> 
-          <TouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
+          <TouchableOpacity 
+          onPress={() => {
+    SetSection('A'); 
+    navigation.navigate('sectionedit', { year, section}); 
+  }} >
             <Image
               source={require('../assets/appIMG/Edit.png')}
             />
@@ -35,10 +49,18 @@ const SectionScreen = () => {
       </TouchableOpacity>
 
       {/* Section B */}
-      <TouchableOpacity onPress={() => navigation.navigate('sectionmenu')} style={styles.sectionContainer}>
+      <TouchableOpacity      
+       onPress={() => {
+    SetSection('B'); 
+    navigation.navigate('sectionmenu'); 
+  }} 
+   style={styles.sectionContainer}>
         <Text style={styles.sectionText}>B Section</Text>
         <View style={styles.iconContainer}> 
-          <TouchableOpacity onPress={() => navigation.navigate('sectionedit')}>
+          <TouchableOpacity onPress={() => {
+    SetSection('A'); 
+    navigation.navigate('sectionedit', { year, section}); 
+  }}>
             <Image
               source={require('../assets/appIMG/Edit.png')}
             />

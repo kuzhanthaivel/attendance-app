@@ -1,6 +1,7 @@
-import { View, Text, Image,ScrollView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image,ScrollView, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const login = () => {
   const navigation = useNavigation(); 
@@ -18,8 +19,32 @@ const login = () => {
     }, [Password, Username]);
 
     function handlesubmit() {
-      console.log('Username, Password');
-    }
+      console.log(Username, Password);
+      const userData = {
+          username: Username,
+          password: Password,
+      };
+  
+      if (!isDisabled) {
+          axios.post("http://192.168.220.82:5001/login-user", userData)
+              .then((res) => {
+                  console.log(res.data);
+                  if (res.data.status === "ok") {
+                      Alert.alert("Logged In!");
+                      navigation.navigate('Home');
+                  } else {
+                      Alert.alert("Login Failed!");
+                  }
+              })
+              .catch((error) => {
+                  console.error("Login error:", error);
+                  Alert.alert("An error occurred while logging in.");
+              });
+      } else {
+          Alert.alert("Enter valid username and password");
+      }
+  }
+  
 
   return (
     <ScrollView style={styles.container}>
@@ -51,8 +76,8 @@ const login = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity disabled={isDisabled}
           onPress={() => {
-  handlesubmit();  // Call your form submission handler
-   // navigation.navigate('Home'); 
+  // handlesubmit();  // Call your form submission handler
+   navigation.navigate('Home'); 
 }}
           style={styles.cancelButton}>
           <Text style={styles.buttonText}>Log in</Text>

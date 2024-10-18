@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const SectionMenu = () => {
   const navigation = useNavigation();
-
   return (
     <View style={styles.container}>
       {/* Header */}

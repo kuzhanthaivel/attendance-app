@@ -18,6 +18,7 @@ const StudentCard = ({ rollNumber, name, imageSource, onDelete }) => (
 
 const SectionEdit = () => {
   const navigation = useNavigation();
+  const { year, section } = route.params;
 
   return (
     <View style={styles.container}>
