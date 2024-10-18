@@ -17,6 +17,10 @@ const login = () => {
         }
     }, [Password, Username]);
 
+    function handlesubmit() {
+      console.log('Username, Password');
+    }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
@@ -46,7 +50,10 @@ const login = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity disabled={isDisabled}
-          onPress={() => navigation.navigate('Home')} 
+          onPress={() => {
+  handlesubmit();  // Call your form submission handler
+   // navigation.navigate('Home'); 
+}}
           style={styles.cancelButton}>
           <Text style={styles.buttonText}>Log in</Text>
         </TouchableOpacity>
