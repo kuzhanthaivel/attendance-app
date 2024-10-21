@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 // Reusable component for student card
@@ -16,7 +16,7 @@ const StudentCard = ({ rollNumber, name, imageSource, onDelete }) => (
   </View>
 );
 
-const SectionEdit = () => {
+const SectionEdit = ({ route }) => {
   const navigation = useNavigation();
   const { year, section } = route.params;
 
@@ -60,7 +60,7 @@ const SectionEdit = () => {
 
       {/* Floating Add Button */}
       <View style={styles.addButtonContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('addstudent')} style={styles.addButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('addstudent', { year, section})} style={styles.addButton}>
           <Image source={require('../assets/appIMG/Add.png')} />
         </TouchableOpacity>
       </View>

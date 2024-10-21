@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const SectionScreen = () => {
+const SectionScreen = ({ route }) => {
   const navigation = useNavigation();
   const { year } = route.params;
   const [section, setSection] = useState('');

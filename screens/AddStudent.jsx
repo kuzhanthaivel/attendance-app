@@ -1,10 +1,11 @@
 import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const AddStudent = () => {
+const AddStudent = ({ route }) => {
   const navigation = useNavigation(); 
-
+  const { year, section } = route.params;
+  
   const [studentName, setStudentName] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
 
