@@ -1,8 +1,11 @@
 # Demo Video
 
-Click the link below to view the demo video:
+Watch the demo video below:
 
-[View Demo Video](1725776324275.mp4)
+<video width="800" controls>
+  <source src="1725776324275.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ---
-*Note: Click the link above to download or view the demo video.*
+*Note: If the video doesn't play, you can [download it here](1725776324275.mp4).*
